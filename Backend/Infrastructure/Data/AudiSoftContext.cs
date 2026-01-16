@@ -23,7 +23,7 @@ public class AudiSoftContext : DbContext
             entity.HasMany(e => e.Notas)
                   .WithOne(n => n.Estudiante)
                   .HasForeignKey(n => n.EstudianteId)
-                  .OnDelete(DeleteBehavior.Restrict);
+                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         // Profesor
@@ -34,7 +34,7 @@ public class AudiSoftContext : DbContext
             entity.HasMany(p => p.Notas)
                   .WithOne(n => n.Profesor)
                   .HasForeignKey(n => n.ProfesorId)
-                  .OnDelete(DeleteBehavior.Restrict);
+                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         // Nota

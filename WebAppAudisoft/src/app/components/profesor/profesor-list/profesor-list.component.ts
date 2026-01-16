@@ -14,7 +14,6 @@ import { ProfesorFormComponent } from '../profesor-form/profesor-form.component'
     selector: 'app-profesor-list',
     standalone: true,
     imports: [CommonModule, TableModule, ButtonModule, ToolbarModule, ConfirmDialogModule, ToastModule, ProfesorFormComponent],
-    providers: [ConfirmationService, MessageService],
     template: `
     <div class="card">
         <p-toast></p-toast>
@@ -44,7 +43,6 @@ import { ProfesorFormComponent } from '../profesor-form/profesor-form.component'
         </p-table>
     </div>
         <app-profesor-form [(visible)]="profesorDialog" [profesor]="profesor" (onSave)="saveProfesor($event)"></app-profesor-form>
-        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>
   `
 })
@@ -73,9 +71,12 @@ export class ProfesorListComponent {
 
     deleteProfesor(profesor: Profesor) {
         this.confirmationService.confirm({
-            message: '¿Estás seguro de que quieres borrar a ' + profesor.nombre + '?',
-            header: 'Confirmar',
+            message: '¿Estás seguro de que quieres borrar a ' + profesor.nombre + '? Esta acción eliminará TAMBIÉN todas sus notas asociadas.',
+            header: 'Confirmar Eliminación en Cascada',
             icon: 'pi pi-exclamation-triangle',
+            rejectLabel: 'Cancelar',
+            acceptLabel: 'Eliminar',
+            acceptButtonStyleClass: 'p-button-danger',
             accept: () => {
                 if (profesor.id) {
                     this.profesorService.eliminar(profesor.id).subscribe(() => {
