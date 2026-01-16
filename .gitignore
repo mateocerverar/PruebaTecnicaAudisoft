@@ -1,0 +1,32 @@
+# .gitignore for .NET and Angular project
+
+## .NET (Backend)
+[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Angular (WebAppAudisoft)
+WebAppAudisoft/node_modules/
+WebAppAudisoft/dist/
+WebAppAudisoft/.angular/
+WebAppAudisoft/tmp/
+WebAppAudisoft/out-tsc/
+WebAppAudisoft/bazel-out/
+WebAppAudisoft/*.log
+WebAppAudisoft/npm-debug.log*
+WebAppAudisoft/yarn-debug.log*
+WebAppAudisoft/yarn-error.log*
+
+## Environments
+.env
+.env.local
+.env.*.local
+
+## OS Files
+.DS_Store
+Thumbs.db

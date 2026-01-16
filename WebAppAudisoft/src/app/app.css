@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--surface-b);
+    color: var(--text-color);
+}
+
+.main-content {
+    padding: 2rem;
+    min-height: 100vh;
+}
