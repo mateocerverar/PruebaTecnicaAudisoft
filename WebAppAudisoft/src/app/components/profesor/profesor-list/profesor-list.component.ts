@@ -71,12 +71,11 @@ export class ProfesorListComponent {
 
     deleteProfesor(profesor: Profesor) {
         this.confirmationService.confirm({
-            message: '¿Estás seguro de que quieres borrar a ' + profesor.nombre + '? Esta acción eliminará TAMBIÉN todas sus notas asociadas.',
-            header: 'Confirmar Eliminación en Cascada',
+            message: 'El registro ' + profesor.nombre + ' no se puede eliminar porque tiene notas asociadas.',
+            header: 'No se puede realizar la eliminación',
             icon: 'pi pi-exclamation-triangle',
-            rejectLabel: 'Cancelar',
-            acceptLabel: 'Eliminar',
-            acceptButtonStyleClass: 'p-button-danger',
+            acceptVisible: false,
+            rejectVisible: false,
             accept: () => {
                 if (profesor.id) {
                     this.profesorService.eliminar(profesor.id).subscribe(() => {
